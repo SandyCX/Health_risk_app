@@ -22,6 +22,9 @@ def connect_db():
 
 def classify_risk(sleep_hours, steps, mood_score):
     """Decision tree: sleep -> steps -> mood."""
+    if sleep_hours < 5:
+        return "高"
+
     if sleep_hours < 6:
         if steps < 4000:
             if mood_score <= 4:
@@ -77,8 +80,8 @@ def validate_log(payload, partial=False):
 
     if "sleep_hours" in payload:
         sleep = float(payload["sleep_hours"])
-        if sleep < 0 or sleep > 24:
-            raise ValueError("sleep_hours 必須介於 0 到 24")
+        if sleep <= 0 or sleep > 24:
+            raise ValueError("sleep_hours 必須大於 0 且不超過 24")
         cleaned["sleep_hours"] = round(sleep, 1)
 
     if "steps" in payload:
