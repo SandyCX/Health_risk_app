@@ -1,11 +1,10 @@
-# 智慧健康日誌與風險評估系統
+# Health_risk_app
 
-這是期末挑戰任務題目 A 的實作：Python 標準函式庫 HTTP API、SQLite 資料庫、原生 HTML/CSS/JS 前端。
+智慧健康日誌與風險評估系統。這是期末挑戰任務題目 A 的實作：Python 標準函式庫 HTTP API、SQLite 資料庫、原生 HTML/CSS/JS 前端。
 
 ## 執行方式
 
 ```powershell
-cd outputs\health-risk-app
 python server.py
 ```
 
