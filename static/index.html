@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>智慧健康日誌與風險評估系統</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">題目 A</p>
+          <h1>智慧健康日誌與風險評估系統</h1>
+        </div>
+        <div id="riskBadge" class="risk-badge risk-mid">讀取中</div>
+      </section>
+
+      <section class="grid">
+        <form id="logForm" class="panel">
+          <h2>新增今日紀錄</h2>
+          <label>
+            日期
+            <input name="log_date" type="date" required />
+          </label>
+          <label>
+            睡眠時數
+            <input name="sleep_hours" type="number" min="0" max="24" step="0.1" required />
+          </label>
+          <label>
+            步數
+            <input name="steps" type="number" min="0" step="1" required />
+          </label>
+          <label>
+            心情分數
+            <input name="mood_score" type="number" min="1" max="10" step="1" required />
+          </label>
+          <button type="submit">儲存並分類</button>
+          <p id="formStatus" class="status"></p>
+        </form>
+
+        <section class="panel decision">
+          <h2>決策樹判斷</h2>
+          <ol>
+            <li>睡眠少於 6 小時時，進一步看步數是否少於 4000。</li>
+            <li>步數偏低時，再用心情分數區分高風險與中風險。</li>
+            <li>睡眠足、步數足且心情正常時，判定為低風險。</li>
+          </ol>
+          <div id="summary" class="summary"></div>
+        </section>
+      </section>
+
+      <section class="panel">
+        <div class="table-head">
+          <h2>歷史紀錄</h2>
+          <button id="refreshButton" type="button" class="secondary">重新整理</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>睡眠</th>
+                <th>步數</th>
+                <th>心情</th>
+                <th>風險</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="logsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
